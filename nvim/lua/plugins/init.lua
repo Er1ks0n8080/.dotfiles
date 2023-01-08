@@ -41,7 +41,7 @@ packer.startup(function()
   -- любимом IDE
   use {
 	'nvim-treesitter/nvim-treesitter',
--- ~/.config/nvim/lua/plugins/init.lua
+      -- ~/.config/nvim/lua/plugins/init.lua
       run = ':TSUpdate',
       config = function()
    		-- так подгружается конфигурация конкретного плагина
@@ -60,5 +60,10 @@ packer.startup(function()
 	  	 }
 	  end,
   })
-  end
+  use {
+    'iamcco/markdown-preview.nvim',
+    run = function() vim.fn['mkdp#util#install']() end,
+    ft = {'markdown'}
+  }
+end
 )
