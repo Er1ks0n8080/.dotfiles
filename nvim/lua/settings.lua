@@ -20,7 +20,7 @@ opt.swapfile = false
 -----------------------------------------------------------
 vim.opt.termguicolors = true
 vim.o.background = "dark"
-cmd('colorscheme iceberg')
+cmd('colorscheme gruvbox')
 -----------------------------------------------------------
 -- Табы и отступы
 -----------------------------------------------------------

@@ -23,34 +23,16 @@ packer.startup(function()
   -- Навигация внутри файла по классам и функциям
   use 'majutsushi/tagbar'
   -- Замена fzf и ack
-  use { 'nvim-telescope/telescope.nvim',
-  requires = { {'nvim-lua/plenary.nvim'} },
-  config = function() require'telescope'.setup {} end, } 
-  -- конфиги для LSP серверов, нужен для простой настройки и
   -- возможности добавления новых серверов
   use 'neovim/nvim-lspconfig'
   -- use 'yorickpeterse/happy_hacking.vim'
-  --use 'ellisonleao/gruvbox.nvim'
-	use 'cocopon/iceberg.vim'
+  use 'ellisonleao/gruvbox.nvim'
+	--use 'cocopon/iceberg.vim'
   -- зависимости для движка автодополнения
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
 	use 'hrsh7th/nvim-cmp'
-  -- парсер для всех языков программирования, цветной код как в твоем
-  -- любимом IDE
-  use {
-	'nvim-treesitter/nvim-treesitter',
-      -- ~/.config/nvim/lua/plugins/init.lua
-      run = ':TSUpdate',
-      config = function()
-   		-- так подгружается конфигурация конкретного плагина
-      -- ~/.config/nvim/lua/plugins/treesitter.lua
-      require('treesitter').setup {} 
-  end,
-  }
-  use 'hrsh7th/vim-vsnip'    
-  --автосохранение
   use({
   	"Pocco81/auto-save.nvim",
   	config = function()
@@ -61,9 +43,12 @@ packer.startup(function()
 	  end,
   })
   use {
-    'iamcco/markdown-preview.nvim',
-    run = function() vim.fn['mkdp#util#install']() end,
-    ft = {'markdown'}
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    config = function()
+      require('plugins.telescope')
+    end
   }
+  --rust
+  use("simrat39/rust-tools.nvim")
 end
 )

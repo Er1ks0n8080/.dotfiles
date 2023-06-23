@@ -1,9 +1,7 @@
 require('plugins/cmp')
 require('plugins/init')
-require('plugins/treesitter')
 require('plugins/lsp')
 require('plugins/lspconfig')
-require('plugins/telescope')
 require('keymaps')
 require('settings')
 

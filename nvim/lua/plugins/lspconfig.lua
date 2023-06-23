@@ -11,12 +11,14 @@ end
 local on_attach = require('plugins.lsp')
 
 -- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim-install
-lspconfig.clangd.setup(config({
-    on_attach = on_attach
-}))
+
 lspconfig.pyright.setup(config({
     on_attach = on_attach
 }))
-lspconfig.gopls.setup(config({
-    on_attach = on_attach
-}))
+lspconfig.rust_analyzer.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    cmd = {
+      "rustup", "run", "stable","rust-analyzer"
+    }
+}
