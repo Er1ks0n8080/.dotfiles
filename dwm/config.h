@@ -1,11 +1,15 @@
 /* See LICENSE file for copyright and license details. */
 
-//volume conf
 #include <X11/XF86keysym.h>
 
+//volume conf
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+
+//light conf
+static const char *uplight[] = {"light", "-A", "10",NULL};
+static const char *downlight[] = {"light", "-U", "10",NULL};
 
 /* appearance */
 #if ROUNDED_CORNERS_PATCH
@@ -897,10 +901,13 @@ static const Key on_empty_keys[] = {
 #endif // ON_EMPTY_KEYS_PATCH
 
 static const Key keys[] = {
+  //light config 
+  {0,                        XK_F2, spawn, {.v = downlight}},
+  {0,                        XK_F3, spawn, {.v = uplight}},
   //volume config
-  { MODKEY,                       XK_F7, spawn, {.v = downvol } },
-	{ MODKEY,                       XK_F6,  spawn, {.v = mutevol } },
-	{ MODKEY,                       XK_F8, spawn, {.v = upvol   } },
+  {0,                       XK_F7, spawn, {.v = downvol } },
+	{0,                       XK_F6,  spawn, {.v = mutevol } },
+	{0,                       XK_F8, spawn, {.v = upvol   } },
 	/* modifier                     key            function                argument */
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
