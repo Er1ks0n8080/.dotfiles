@@ -22,3 +22,4 @@ lspconfig.rust_analyzer.setup {
       "rustup", "run", "stable","rust-analyzer"
     }
 }
+lspconfig.clangd.setup {}
